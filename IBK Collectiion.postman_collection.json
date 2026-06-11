@@ -1,0 +1,332 @@
+{
+  "info": {
+    "_postman_id": "a9f20634-bb16-485c-8f40-2b868cc2d166",
+    "name": "IBK Collectiion",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18698727"
+  },
+  "item": [
+    {
+      "name": "Happy Path",
+      "item": [
+        {
+          "name": "200",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"monto\": 100,\r\n    \"monedaOrigen\": \"USD\",\r\n    \"monedaDestino\": \"PEN\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/exchange/convert",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "exchange",
+                "convert"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "API EXTERNA",
+      "item": [
+        {
+          "name": "api publi tipo cambio",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "BAD_REQUEST",
+      "item": [
+        {
+          "name": "Monto Field",
+          "item": [
+            {
+              "name": "Monto excesivo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"monto\": 100000000,\r\n    \"monedaOrigen\": \"USD\",\r\n    \"monedaDestino\": \"PEN\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v1/exchange/convert",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v1",
+                    "exchange",
+                    "convert"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Monto no nulo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\r\n    \"monedaOrigen\": \"USD\",\r\n    \"monedaDestino\": \"PEN\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v1/exchange/convert",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v1",
+                    "exchange",
+                    "convert"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Moneda Destino",
+          "item": [
+            {
+              "name": "Formato incorrecto moneda origin",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"monto\": 100,\r\n    \"monedaOrigen\": \"&$#\",\r\n    \"monedaDestino\": \"PEN\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v1/exchange/convert",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v1",
+                    "exchange",
+                    "convert"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Moneda Destino no nulo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"monto\": 100,\r\n    \"monedaOrigen\": \"USD\"\r\n\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v1/exchange/convert",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v1",
+                    "exchange",
+                    "convert"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "MonedaOrigen",
+          "item": [
+            {
+              "name": "Formato incorrecto moneda destino",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"monto\": 100,\r\n    \"monedaOrigen\": \"USD\",\r\n    \"monedaDestino\": \"/%$\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v1/exchange/convert",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v1",
+                    "exchange",
+                    "convert"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Moneda Origin No nulo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"monto\": 100,\r\n\r\n    \"monedaDestino\": \"PEN\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v1/exchange/convert",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v1",
+                    "exchange",
+                    "convert"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REGLAS NEGOCIO",
+      "item": [
+        {
+          "name": "EQUAL CURRENCY",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"monto\": 100,\r\n    \"monedaOrigen\": \"USD\",\r\n    \"monedaDestino\": \"USD\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/exchange/convert",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "exchange",
+                "convert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Moneda no soportada",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"monto\": 100,\r\n    \"monedaOrigen\": \"RUB\",\r\n    \"monedaDestino\": \"PEN\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/exchange/convert",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "exchange",
+                "convert"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
